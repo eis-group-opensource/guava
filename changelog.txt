@@ -1,0 +1,13 @@
+Changes in 23.6-jre-e1
+* Created and deprecated local cache wrapping instance LocalReloadingCache (needed for adaptation for Richfaces 4.3.x by overriding ConcurentMap#get method).
+* Created and deprecated method MapMaker#softValues (needed for adaptation for Richfaces 4.3.x).
+* Changed scope of Iterators#emptyIterator (needed for adaptation for Richfaces 4.3.x).
+* Created and deprecated method MapMaker#makeComputingMap to use Guava's CacheLoader instead of removed MapMaker (needed for Richfaces 4.3.x).
+* Created interface method LoadingCache#asReloadingMap (used only for Richfaces 4.3.x adaptation).
+* Created method Closeables#closeQuietly (used only for Richfaces 4.3.x adaptation).
+* Created and adapted unit tests for LocalReloadingCache from Guava 14.0.1. Addition of Junit tests (testWeakKeysSoftValues, testInitialCapacity) for Richfaces 4.3.x adaptation testing.
+* All additions - deprecated and should not be used by no means in EIS suite.
+* Minor changes in LocalCache (to add guava CacheBuilder support). Those changes does not affect Guava workflow by no means. (Except a little overhead)
+
+* If there is a need to test Thread locking, you should uningnore LocalReloadingCacheTest#RemovalNotification_clear_basher. 
+	* This method tests out bashed removal operations via multithreading adding CountDownLatches
